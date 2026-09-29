@@ -1,6 +1,6 @@
 const mysql = require("mysql2");
-const fs = require("fs");
 
+const fs = require("fs");
 require("dotenv").config();
 
 const dbConfig = {
@@ -13,7 +13,11 @@ const dbConfig = {
 
 if (process.env.DB_SSL === "true") {
   dbConfig.ssl = {
-    ca: fs.readFileSync(process.env.DB_SSL_CA_PATH, "utf8"),
+    ca:
+      process.env.DB_SSL_CA ||
+      (process.env.DB_SSL_CA_PATH
+        ? fs.readFileSync(process.env.DB_SSL_CA_PATH, "utf8")
+        : undefined),
     rejectUnauthorized: true,
   };
 }
