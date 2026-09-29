@@ -13,3 +13,5 @@ ai-service/.venv/
 ai-service/temp_uploads/
 ai-service/__pycache__/
 **/desktop.ini
+ca.pem
+roadguard_ai_backup.sql
