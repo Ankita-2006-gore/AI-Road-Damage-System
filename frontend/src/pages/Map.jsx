@@ -7,6 +7,7 @@ import {
 } from "react-leaflet";
 import { Link } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
+import { API_BASE_URL } from "../config";
 
 function Map() {
   const [reports, setReports] = useState([]);
@@ -17,7 +18,7 @@ function Map() {
     const fetchReports = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/reports",
+          `${API_BASE_URL}/api/reports`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

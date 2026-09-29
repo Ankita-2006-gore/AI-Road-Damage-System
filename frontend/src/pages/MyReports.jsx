@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../config";
 
 function MyReports() {
   const [reports, setReports] = useState([]);
@@ -11,7 +12,7 @@ function MyReports() {
     const fetchReports = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/reports",
+          `${API_BASE_URL}/api/reports`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/login",
+        `${API_BASE_URL}/api/login`,
         {
           method: "POST",
           headers: {

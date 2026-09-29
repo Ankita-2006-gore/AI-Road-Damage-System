@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ function Dashboard() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/upload",
+        `${API_BASE_URL}/api/upload`,
         {
           method: "POST",
           headers: {

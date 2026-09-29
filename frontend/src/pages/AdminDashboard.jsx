@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../config";
 
 function AdminDashboard() {
   const [reports, setReports] = useState([]);
@@ -15,7 +16,7 @@ function AdminDashboard() {
   const fetchReports = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/admin/reports",
+       `${API_BASE_URL}/api/admin/reports`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -46,7 +47,7 @@ function AdminDashboard() {
   const updateStatus = async (reportId, newStatus) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/reports/${reportId}/status`,
+       `${API_BASE_URL}/api/admin/reports/${reportId}/status`,
         {
           method: "PUT",
           headers: {
