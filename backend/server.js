@@ -13,7 +13,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -365,7 +365,7 @@ app.post(
       // ------------------------------------------
 
       const aiResponse = await axios.post(
-        "http://127.0.0.1:8000/predict",
+  `${process.env.AI_SERVICE_URL || "http://127.0.0.1:8000"}/predict`,
         form,
         {
           headers: {
@@ -536,7 +536,7 @@ app.post(
 // START SERVER
 // ==========================================
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
 
   console.log(
     `Server running on http://localhost:${PORT}`
